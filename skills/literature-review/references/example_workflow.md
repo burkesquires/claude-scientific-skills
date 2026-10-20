@@ -1,3 +1,5 @@
+> **Fork note (2026-10-20):** `parallel-cli` / parallel-web is an optional, paid third-party search service. It is not required. Use the assistant's own web search tool or the bibliographic databases below instead. Do not fill a citation field you cannot verify.
+
 # Example Workflow
 
 Illustrative end-to-end recipe, not an executed review. Run from the skill directory; populate the protocol, normalized search records, bibliography, and CSL file before the dependent commands. Dates below are a deliberately historical 2015-2024 interval.

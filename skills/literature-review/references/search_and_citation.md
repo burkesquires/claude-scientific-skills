@@ -1,3 +1,5 @@
+> **Fork note (2026-10-20):** `parallel-cli` / parallel-web is an optional, paid third-party search service. It is not required. Use the assistant's own web search tool or the bibliographic databases below instead. Do not fill a citation field you cannot verify.
+
 # Search, citation chaining, and source verification
 
 Use [database_strategies.md](database_strategies.md) for current request syntax,

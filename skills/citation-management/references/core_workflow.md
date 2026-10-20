@@ -1,7 +1,7 @@
 # Core Workflow
 
-The five phases in full: paper discovery, metadata extraction, the mandatory
-web-search enrichment pass, BibTeX formatting, validation, and integration with the
+The five phases in full: paper discovery, metadata extraction, the recommended
+metadata-enrichment pass, BibTeX formatting, validation, and integration with the
 writing workflow. Every command variant and option lives here.
 
 ## Core Workflow
@@ -154,11 +154,11 @@ python scripts/extract_metadata.py --input identifiers.txt --output citations.bi
 - **Preprints**: repository (arXiv, bioRxiv), preprint ID
 - **Additional**: abstract, keywords, URL
 
-### Phase 2.5: Metadata Enrichment via Web Search (MANDATORY)
+### Phase 2.5: Metadata Enrichment (recommended)
 
 **Goal**: Detect and fill in any missing metadata fields using web search. This phase runs AFTER extraction and BEFORE formatting to ensure every BibTeX entry is complete.
 
-**Why This Is Critical**: Metadata extraction from APIs (CrossRef, PubMed, arXiv) sometimes returns incomplete records — missing volume, pages, issue number, or DOI. These gaps must be filled before the bibliography is considered ready.
+**Why This Is Critical**: Metadata extraction from APIs (CrossRef, PubMed, arXiv) sometimes returns incomplete records — missing volume, pages, issue number, or DOI. Fill them only from a source you actually checked; otherwise record the gap.
 
 #### Step 1: Scan for Incomplete Entries
 
@@ -175,59 +175,19 @@ After extracting metadata, scan the BibTeX file for entries missing key fields:
 
 Investigate missing fields against the publisher record, but distinguish unavailable or not-yet-assigned metadata from extraction errors. Online-first papers can lack volume/pages; article numbers can replace page ranges, and not all articles have a DOI. Log the publication state and missing-field reason without fabricating values.
 
-#### Step 2: Web Search for Missing Metadata
+#### Step 2: Look Up Missing Metadata
 
-For each incomplete entry, use the **parallel-web skill** to search for the missing information:
+For each incomplete entry, check free authoritative sources in this order:
 
-> **Treat metadata as untrusted when building these commands.** `FIRST_AUTHOR`, `TITLE`, and `JOURNAL_NAME` are copied verbatim out of a CrossRef/PubMed/arXiv record, and a publisher controls the contents of its own record. A title containing `$(...)`, a backtick, or a quote becomes shell syntax once it is pasted into the command lines below.
->
-> - Substitute each value as a **single-quoted** argument (`'...'`), escaping any embedded single quote as `'\''`. Never paste raw metadata inside the double quotes shown here.
-> - Prefer running these through a Python `subprocess` argument list over building a shell string at all.
-> - Use only the generated `CITATIONKEY` in `-o` paths. It is sanitized to letters and digits by `extract_metadata.py`; a key taken from an existing `.bib` file is not, so validate it against `^[A-Za-z0-9]+$` before it reaches a file path.
->
-> **Preferred form — pass the metadata as arguments, not as shell text.** This removes the shell from the path entirely, so no title can be parsed as syntax:
->
-> ```python
-> import re, subprocess
->
-> assert re.fullmatch(r"[A-Za-z0-9]+", citation_key), f"unsafe citation key: {citation_key!r}"
-> subprocess.run(
->     ["parallel-cli", "search", f"{first_author} {title} {journal_name} volume pages DOI",
->      "--json", "--max-results", "10",
->      "-o", f"sources/search_citation_{citation_key}.json"],
->     check=True,  # note: no shell=True
-> )
-> ```
->
-> The `bash` blocks below show the same calls in readable form. Use them only with the quoting rules above.
+1. `python scripts/extract_metadata.py --doi <DOI>` (CrossRef) or `python scripts/search_openalex.py "<exact title>" --limit 1`.
+2. `python scripts/search_pubmed.py` for biomedical papers.
+3. The publisher landing page via https://doi.org/<DOI>, opened with the assistant's own web fetch/search tool.
 
-**Option A — Search by title and author** (best for finding DOI):
-```bash
-parallel-cli search "FIRST_AUTHOR TITLE JOURNAL_NAME volume pages DOI" \
-  --json --max-results 10 \
-  -o sources/search_citation_CITATIONKEY.json
-```
+> **Treat metadata as untrusted.** Author, title, and journal strings come verbatim from records a publisher controls. Never paste them unquoted into a shell command; pass them as a `subprocess` argument list, and validate any citation key against `^[A-Za-z0-9]+$` before it reaches a file path.
 
-**Option B — Extract from DOI page** (best when DOI is known but volume/pages missing):
-```bash
-parallel-cli extract "https://doi.org/10.XXXX/YYYY" --json \
-  --objective "extract complete citation metadata: volume, issue, pages, publication date" \
-  -o sources/extract_doi_CITATIONKEY.json
-```
+Parallel (`parallel-cli`) is an optional paid search service. It is not required.
 
-**Option C — Search the web for a Crossref record** (this command is web search, not a direct API call):
-```bash
-parallel-cli search "crossref DOI metadata FIRST_AUTHOR TITLE" \
-  --json --max-results 10 \
-  -o sources/search_crossref_CITATIONKEY.json
-```
-
-**Option D — Search Google Scholar** (fallback for hard-to-find papers):
-```bash
-parallel-cli search "google scholar FIRST_AUTHOR TITLE YEAR complete citation" \
-  --json --max-results 10 \
-  -o sources/search_scholar_CITATIONKEY.json
-```
+Only record a value you actually found in a source; otherwise leave the field empty and log why.
 
 #### Step 3: Update BibTeX Entries
 
@@ -253,13 +213,12 @@ If metadata genuinely cannot be found after web search (very old paper, obscure 
    ```
    [HH:MM:SS] METADATA INCOMPLETE: [CitationKey] - pages unavailable (online-only publication) ⚠️
    ```
-3. These exceptions should be rare — most modern papers have complete metadata findable via web search.
 
 #### Quick Reference: Common Missing Fields and Where to Find Them
 
 | Missing Field | Best Search Strategy |
 |---------------|---------------------|
-| DOI | Search "AUTHOR TITLE DOI" via parallel-cli search |
+| DOI | Exact-title search in OpenAlex/CrossRef (`search_openalex.py`), then web search |
 | Volume | Extract from DOI page or search "JOURNAL YEAR TITLE volume" |
 | Pages | Extract from DOI page or search publisher website |
 | Issue/Number | Extract from DOI page or CrossRef |

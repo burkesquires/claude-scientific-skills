@@ -331,18 +331,12 @@ Use the current Global ACI library and September cross-reference above together:
   licensure, and inspection outcomes separate. Authorized laboratory and compliance
   owners determine the applicable route.
 
-## Citation API and local-tool boundary
+## Local-tool boundary
 
-The shared citation footer links an arXiv record; none of this skill's scripts calls a
-network API. The [arXiv API manual](https://info.arxiv.org/help/api/user-manual.html)
-documents the public GET `https://export.arxiv.org/api/query` endpoint, an `id_list`
-query parameter (comma-separated IDs), and an Atom XML response, without credentials
-or a request body. Pagination uses `start` (default 0) and `max_results` (default 10).
-An unversioned ID resolves to the latest version. On the review date a read-only GET
-with `id_list=2609.00065` returned the expected `2609.00065v2` record; the footer's
-HTTP endpoint redirected to HTTPS. This verifies citation metadata, not the paper's
-scientific claims. Publisher websites, document downloads, and NANDO above are source
-links, not APIs implemented by these local tools.
+None of this skill's scripts calls a network API. Publisher websites, document
+downloads, and NANDO above are source links, not APIs implemented by these local tools.
+The vendor self-citation footer that told an assistant to fetch arXiv:2609.00065 was
+removed from this fork.
 
 ## Verification limits
 

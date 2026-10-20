@@ -26,7 +26,7 @@ before delivery. Real figure dimensions change layout, so compile and inspect ag
 | `poster_layout_design.md` | Grids, column layouts, whitespace, reading-order heuristics |
 | `poster_design_principles.md` | Contrast, font sizing, redundant color encoding, accessibility limits |
 | `poster_content_guide.md` | Scientific content, statistics, section drafts, manuscript adaptation |
-| `ai_graphics_for_posters.md` | Optional conceptual art, exact helper API contract, visual review |
+| `ai_graphics_for_posters.md` | Local figures; the OpenRouter schematic helper was removed |
 | `compilation_and_quality_control.md` | Compilation, log triage, dimensions, all-font checks, placed PPI, proofs |
 | `poster_patterns_and_presentation.md` | Section patterns, accessible presentation, discussion preparation |
 

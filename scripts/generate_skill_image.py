@@ -393,7 +393,7 @@ class ScriptError(RuntimeError):
 
 
 def find_api_key(explicit: str | None) -> str:
-    """Resolve the key from --api-key, then the environment, then a .env file."""
+    """Resolve the key from --api-key or the environment. Do not read .env files."""
     if explicit:
         return explicit
 
@@ -401,25 +401,11 @@ def find_api_key(explicit: str | None) -> str:
     if from_env:
         return from_env
 
-    for directory in [Path.cwd(), *Path.cwd().parents, REPO_ROOT]:
-        env_file = directory / ".env"
-        if not env_file.is_file():
-            continue
-        for raw in env_file.read_text(encoding="utf-8", errors="replace").splitlines():
-            line = raw.strip()
-            if line.startswith("#") or "=" not in line:
-                continue
-            name, _, value = line.partition("=")
-            if name.strip() == "OPENROUTER_API_KEY":
-                value = value.strip().strip('"').strip("'")
-                if value:
-                    return value
-
     raise ScriptError(
         "OPENROUTER_API_KEY not found.\n"
         "  export OPENROUTER_API_KEY=your-key\n"
-        "  or add OPENROUTER_API_KEY=your-key to the repository .env\n"
         "  or pass --api-key\n"
+        "This script does not read .env files.\n"
         "Keys: https://openrouter.ai/keys"
     )
 

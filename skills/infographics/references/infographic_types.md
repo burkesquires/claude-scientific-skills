@@ -1,3 +1,5 @@
+> **Fork note (2026-10-20):** The OpenRouter infographic generator was removed. Command blocks that called it were deleted. Build the figure with matplotlib, Mermaid, or Graphviz from verified data.
+
 # Infographic Types Reference Guide
 
 This reference provides extended templates, examples, and prompt patterns for each infographic type.
@@ -63,27 +65,10 @@ data labels on chart, clean professional design.
 ### Example Prompts
 
 **Synthetic Clinic Operations (layout example):**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Illustrative clinic operations, synthetic data: 100 scheduled visits; \
-   80 completed, 15 rescheduled, 5 canceled. Show counts and percentages, \
-   label denominator 100 scheduled visits, label data synthetic, \
-   blue and gray medical design, white background" \
-  --output figures/clinic_operations.png --type statistical
-```
+
 
 **Business Metrics:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Statistical infographic for Q4 business results: \
-   Revenue: USD 2.4M (+15% YoY), Customers: 12,500 (+22%), \
-   NPS Score: 78 (+8 points), Retention: 94%. \
-   4-stat grid with upward arrow indicators for growth, \
-   bar chart showing quarterly trend, \
-   navy blue and gold corporate color scheme, \
-   professional business design, white background" \
-  --output figures/q4_metrics.png --type statistical
-```
+
 
 ---
 
@@ -147,35 +132,10 @@ project name header, clean professional design.
 ### Example Prompts
 
 **Technology Evolution:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Horizontal timeline infographic: Evolution of Mobile Phones \
-   1983: First mobile phone (Motorola DynaTAC), \
-   1992: First smartphone (IBM Simon), \
-   2007: iPhone launches touchscreen era, \
-   2010: First 4G networks, \
-   2019: First 5G phones, \
-   2023: Foldable phones mainstream. \
-   Phone icons evolving at each node, gradient from gray (old) to blue (new), \
-   connecting timeline arrow, year labels, clean tech design" \
-  --output figures/mobile_evolution.png --type timeline
-```
+
 
 **Company History:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Vertical timeline infographic: Our Company Journey \
-   2010: Founded in garage with 2 employees, \
-   2012: First major client signed, \
-   2015: Reached 100 employees, \
-   2018: IPO on NASDAQ, \
-   2022: Expanded to 30 countries, \
-   2025: 10,000 employees worldwide. \
-   Milestone icons for each event, alternating left-right layout, \
-   blue and gold corporate colors, growth trajectory feel, \
-   professional business design" \
-  --output figures/company_history.png --type timeline
-```
+
 
 ---
 
@@ -238,34 +198,10 @@ clear yes/no labels, flowchart style, white background.
 ### Example Prompts
 
 **Recipe Process:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Process infographic: How to Make Perfect Coffee \
-   Step 1: Grind fresh beans (coffee grinder icon), \
-   Step 2: Heat water to 200°F (thermometer icon), \
-   Step 3: Add 2 tablespoons per 6 oz water (measuring spoon icon), \
-   Step 4: Brew for 4 minutes (timer icon), \
-   Step 5: Serve and enjoy (coffee cup icon). \
-   Vertical flow with large numbered circles, \
-   brown and cream coffee color scheme, \
-   arrows between steps, cozy design feel" \
-  --output figures/coffee_process.png --type process
-```
+
 
 **Onboarding Workflow:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Process infographic: New Employee Onboarding \
-   Day 1: Welcome orientation and paperwork (clipboard icon), \
-   Week 1: Meet your team and set up workspace (people icon), \
-   Week 2: Training and system access (laptop icon), \
-   Week 3: Shadow senior colleagues (handshake icon), \
-   Week 4: First independent project (checkmark icon). \
-   Horizontal timeline flow with milestones, \
-   teal and coral corporate colors, \
-   professional HR design style" \
-  --output figures/onboarding_process.png --type process
-```
+
 
 ---
 
@@ -335,30 +271,10 @@ balanced visual weight, white background.
 ### Example Prompts
 
 **Software Comparison:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Comparison infographic: Hypothetical Tool A vs Tool B \
-   Pricing: A costs USD 10/month, B costs USD 20/month, \
-   Integrations: A supports 3 example tools, B supports 5, \
-   Video calls: A unavailable, B available, \
-   File storage: A 5GB, B 10GB, \
-   Label all features and prices fictional. \
-   Purple left side (A), blue right side (B), \
-   logos at top, feature comparison rows, \
-   checkmarks for strengths, modern tech design" \
-  --output figures/slack_vs_teams.png --type comparison
-```
+
 
 **Study Design Comparison:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Comparison infographic: Two illustrative study plans. \
-   Plan A: 4 sites, 200 participants, 12-week follow-up. \
-   Plan B: 2 sites, 100 participants, 24-week follow-up. \
-   Label all values hypothetical; show identical comparison rows, \
-   blue and orange colors, clear units, no efficacy claims" \
-  --output figures/study_comparison.png --type comparison
-```
+
 
 ---
 
@@ -424,30 +340,10 @@ educational engaging design, white background.
 ### Example Prompts
 
 **Productivity Tips:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "List infographic: 7 Productivity Tips for Remote Workers \
-   1. Create a dedicated workspace (desk icon), \
-   2. Set regular working hours (clock icon), \
-   3. Take scheduled breaks (coffee icon), \
-   4. Use noise-canceling headphones (headphones icon), \
-   5. Batch similar tasks together (stack icon), \
-   6. Limit social media during work (phone icon), \
-   7. End each day with tomorrow's plan (checklist icon). \
-   Large colorful numbers, icons beside each tip, \
-   teal and orange color scheme, friendly modern design" \
-  --output figures/remote_work_tips.png --type list
-```
+
 
 **Project Checklist:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "List infographic: Five checks before sharing a research figure. \
-   1. Verify values, 2. Label units, 3. Cite sources, \
-   4. Inspect readability, 5. Add an accessible text description. \
-   Numbered cards, teal and orange accents, white background" \
-  --output figures/figure_checklist.png --type list
-```
+
 
 ---
 
@@ -497,35 +393,10 @@ legend with value scale, clean map design.
 ### Example Prompts
 
 **Global Data:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Geographic infographic: Hypothetical Renewable Electricity Share (synthetic data) \
-   Region A 80%, Region B 60%, Region C 40%, \
-   Region D 30%, Region E 20%, Region F 10%, \
-   Percent of annual electricity generation; all regions fictional. \
-   Schematic fictional region map with green gradient coloring, \
-   darker green for higher adoption, \
-   legend showing percentage scale, \
-   key country callouts with percentages, \
-   clean modern cartographic style" \
-  --output figures/renewable_map.png --type geographic
-```
+
 
 **US Regional:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Geographic infographic: Hypothetical Jobs Survey by Region (synthetic data) \
-   Region A: 35% of 1000 surveyed jobs, \
-   Region B: 25%, \
-   Region C: 22%, \
-   Region D: 18%; label all data hypothetical. \
-   Schematic map of four fictional regions, \
-   percentage labels on each region, \
-   blue and purple tech color scheme, \
-   legend showing job concentration, \
-   professional business design" \
-  --output figures/tech_jobs_map.png --type geographic
-```
+
 
 ---
 
@@ -578,30 +449,10 @@ role titles in boxes, white background.
 ### Example Prompts
 
 **Project Hierarchy:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Hierarchical infographic: A hypothetical research project. \
-   Top: Research question. Middle: Three work packages. \
-   Base: Data collection, analysis, and validation tasks. \
-   Show containment and labels; areas do not encode quantities. \
-   Blue and orange palette, clear hierarchy, white background" \
-  --output figures/project_hierarchy.png --type hierarchical
-```
+
 
 **Energy Pyramid:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Hierarchical pyramid infographic: Ecological Energy Pyramid \
-   Top: Apex predators (eagles, wolves) - smallest, \
-   Level 2: Secondary consumers (snakes, foxes), \
-   Level 3: Primary consumers (rabbits, deer), \
-   Base: Producers (plants, algae) - largest. \
-   Triangle pyramid with animal silhouettes, \
-   green gradient from base to top, \
-   energy flow arrows on side, \
-   scientific educational design" \
-  --output figures/energy_pyramid.png --type hierarchical
-```
+
 
 ---
 
@@ -652,34 +503,10 @@ technical illustration style, white background.
 ### Example Prompts
 
 **Business as Body:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Anatomical infographic: A Business is Like a Human Body \
-   Brain = Leadership and strategy (makes decisions), \
-   Heart = Company culture (pumps energy), \
-   Arms = Sales and marketing (reaches out), \
-   Legs = Operations (keeps moving forward), \
-   Skeleton = Systems and processes (provides structure). \
-   Human body silhouette in blue, \
-   labeled callout boxes for each part, \
-   professional corporate design, white background" \
-  --output figures/business_body.png --type anatomical
-```
+
 
 **Computer as House:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Anatomical infographic: Computer as a House \
-   CPU = The brain/office (processes information), \
-   RAM = The desk (temporary workspace), \
-   Hard Drive = The filing cabinet (long-term storage), \
-   GPU = The entertainment room (handles visuals), \
-   Motherboard = The foundation (connects everything). \
-   House illustration with cutaway view, \
-   labeled rooms matching computer parts, \
-   blue and gray tech colors, educational style" \
-  --output figures/computer_house.png --type anatomical
-```
+
 
 ---
 
@@ -719,18 +546,7 @@ modern professional design, white background.
 ### Example Prompts
 
 **Designer Resume:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Resume infographic for a Graphic Designer: \
-   Circular avatar placeholder at top, \
-   Skills with colored bars: Adobe Suite 95%, UI/UX 90%, Branding 85%, Motion 75%. \
-   Experience timeline: 2018-2020 Junior Designer at Agency X, \
-   2020-2023 Senior Designer at Studio Y, 2023-Present Creative Director at Company Z. \
-   Education: BFA Graphic Design. \
-   Contact icons row at bottom. \
-   Coral and teal color scheme, creative modern design" \
-  --output figures/designer_resume.png --type resume
-```
+
 
 ---
 
@@ -790,32 +606,10 @@ Instagram square format.
 ### Example Prompts
 
 **Inspirational Quote:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Social media infographic quote card: \
-   Quote: 'The best time to plant a tree was 20 years ago. \
-   The second best time is now.' \
-   Attribution: Chinese Proverb. \
-   Large decorative quotation marks, centered text, \
-   gradient background from deep green to teal, \
-   tree silhouette illustration, Instagram square format, \
-   modern inspirational design" \
-  --output figures/tree_quote.png --type social
-```
+
 
 **Engagement Stats:**
-```bash
-python skills/infographics/scripts/generate_infographic.py \
-  "Social media infographic: Email Marketing Stats \
-   Headline: Example Campaign (Synthetic Data) \
-   Stat 1: 40% open rate in a hypothetical test, \
-   Stat 2: 5% click rate among 1000 synthetic delivered messages, \
-   Call to action: Double tap if you're an email marketer! \
-   Bold colorful numbers, envelope icons, \
-   purple and yellow vibrant colors, \
-   Instagram square format, engaging design" \
-  --output figures/email_stats_social.png --type social
-```
+
 
 ---
 

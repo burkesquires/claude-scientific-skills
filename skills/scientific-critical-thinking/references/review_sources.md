@@ -64,7 +64,7 @@ shortcut that certainty only means closeness to a point estimate.
 - Tiny known-answer arithmetic checks verify the illustrative predictive values and
   independent multiple-testing probability; they do not establish diagnostic performance
   in a real population or validate a formal risk-of-bias/GRADE assessment.
-- The optional scientific-schematics command was checked at the local CLI/help boundary.
+- This fork does not ship the OpenRouter schematic generator. Draw optional figures locally.
   No paid generation of that example or private-data transmission was performed. Its
   provider contract and dependencies belong to that skill, not this appraisal workflow.
 - No patient data, clinical study, registry submission, or authenticated scientific service

@@ -15,6 +15,21 @@
 [![YouTube](https://img.shields.io/badge/YouTube-K--Dense_Inc.-FF0000?logo=youtube)](https://www.youtube.com/@K-Dense-Inc)
 [![Reddit](https://img.shields.io/badge/Reddit-u%2F--k--dense---FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/user/-k-dense-/)
 
+
+## About this fork
+
+This repository is Burke Squires's fork of [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills). K-Dense-AI originally released the project as **claude-scientific-skills** and later renamed it **scientific-agent-skills**. This fork had no commits of its own. On 2026-10-20 it was synced to upstream commit [`593377bb048752abb0152deab9fbb1083a6087df`](https://github.com/K-Dense-AI/scientific-agent-skills/commit/593377bb048752abb0152deab9fbb1083a6087df).
+
+Cleanup in that sync, applied across `skills/` rather than to a short list of skills:
+
+- Removed the "Citing Scientific Agent Skills" block that told the assistant to add the vendor's arXiv paper (2609.00065) to the user's references and to tell the user it had done so. The human-facing citation later in this README and in `CITATION.cff` is unchanged, so upstream attribution stays intact.
+- Removed skill scripts that walked parent directories for `.env` API keys and sent prompts to OpenRouter (`generate_schematic.py`, `generate_schematic_ai.py`, `generate_slide_image.py`, `generate_slide_image_ai.py`, `generate_infographic.py`, `generate_infographic_ai.py`, and `generate_image.py`). Those docs now point at local tools (Mermaid, matplotlib, Graphviz, Beamer, PowerPoint). The maintainer script `scripts/generate_skill_image.py` no longer reads `.env` files; it stays optional and paid, and runs only with an explicit `OPENROUTER_API_KEY` or `--api-key`.
+- Removed the Google Scholar free-proxy option (`ProxyGenerator().FreeProxies()` and `--use-proxy`).
+- Paid Parallel (`parallel-cli`) and OpenRouter steps that were labeled mandatory are described as optional and paid, with a free path through the bundled public-API scripts. Unverifiable citation fields stay blank.
+- In-skill `cd skills/<name>/scripts` paths now resolve from the skill folder, and links to the removed scripts were deleted.
+
+The MIT license and K-Dense copyright are unchanged. Install commands later in this README still name the upstream repository.
+
 > **🔔 Claude Scientific Skills is now Scientific Agent Skills.** Same skills, broader compatibility — now works with any AI agent that supports the open [Agent Skills](https://agentskills.io/) standard, not just Claude.
 
 > **New: [K-Dense BYOK](https://github.com/K-Dense-AI/k-dense-byok)** — A free, open-source AI co-scientist that runs on your desktop, powered by Scientific Agent Skills. Bring your own API keys, pick from 40+ models, and get a full research workspace with web search, file handling, 100+ scientific databases, and access to all 177 skills in this repo. Your data stays on your computer, and you can optionally scale to cloud compute via [Modal](https://modal.com/) for heavy workloads. [Get started here.](https://github.com/K-Dense-AI/k-dense-byok)

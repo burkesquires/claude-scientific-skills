@@ -1,9 +1,7 @@
 """Tests for the latex-posters helpers.
 
-The two schematic scripts are byte-identical to the copies in
-`scientific-schematics` and `literature-review`, so their behaviour comes from
-the shared contract. What is specific here is `review_poster.sh`, the shell
-helper that renders and inspects a compiled poster.
+What is specific here is `review_poster.sh`, the shell helper that renders
+and inspects a compiled poster. The OpenRouter schematic scripts were removed.
 """
 
 from __future__ import annotations
@@ -21,16 +19,6 @@ import skill_contract
 SKILL_ROOT = Path(__file__).resolve().parents[2] / "skills" / "latex-posters"
 SCRIPTS = SKILL_ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
-
-SchematicTests = skill_contract.schematic.schematic_test_case(SKILL_ROOT)
-ReviewParsingTests = skill_contract.schematic.review_parsing_test_case(
-    SCRIPTS, "generate_schematic_ai"
-)
-ReviewFailureTests = skill_contract.schematic.review_failure_test_case(
-    SCRIPTS, "generate_schematic_ai", "ScientificSchematicGenerator",
-    ("diagram.png", "a prompt", 1, "journal", 2),
-)
-CliHelpTests = skill_contract.cli.help_test_case(SKILL_ROOT)
 
 REVIEW_SCRIPT = SCRIPTS / "review_poster.sh"
 

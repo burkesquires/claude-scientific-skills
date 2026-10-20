@@ -330,11 +330,13 @@ image, and no CI check enforces them. If you do ship one, note that it is derive
 documentation, so regenerate it when the skill's workflow changes rather than leaving a picture that
 misrepresents the skill.
 
-`scripts/generate_skill_image.py` is local repository tooling, standard library only, and runs in
-two stages on one `OPENROUTER_API_KEY` (environment variable, repository `.env`, or `--api-key`):
-a text model reads `SKILL.md` plus everything under `references/` and a manifest of `scripts/` and
-`assets/`, distils it into a description of one diagram, then an image model draws it. Because it
-reads the whole skill, run it **after** the documentation is final, not before.
+`scripts/generate_skill_image.py` is optional, paid maintainer tooling (standard library only). It
+is not part of any skill. It runs in two stages on one `OPENROUTER_API_KEY`, taken from the
+environment or `--api-key` — it does not read `.env` files or walk parent directories: a text model
+reads `SKILL.md` plus everything under `references/` and a manifest of `scripts/` and `assets/`,
+distils it into a description of one diagram, then an image model draws it. Because it sends that
+documentation to OpenRouter, run it only when you intend to, and **after** the documentation is
+final.
 
 ```bash
 # one skill -> docs/images/<name>.png, replacing any existing image

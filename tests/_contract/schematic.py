@@ -43,26 +43,8 @@ SKILLS_DIR = REPO_ROOT / "skills"
 #: Files several skills ship byte-identical copies of. A copy that drifts is a
 #: skill quietly behaving differently from its siblings, so `tests/_meta` pins
 #: them together. Each entry is (path relative to the skill, skills).
-SHARED_FILES: tuple[tuple[str, tuple[str, ...]], ...] = (
-    (
-        "scripts/generate_schematic.py",
-        (
-            "scientific-schematics",
-            "latex-posters",
-            "literature-review",
-            "scientific-slides",
-        ),
-    ),
-    (
-        "scripts/generate_schematic_ai.py",
-        (
-            "scientific-schematics",
-            "latex-posters",
-            "literature-review",
-            "scientific-slides",
-        ),
-    ),
-)
+SHARED_FILES: tuple[tuple[str, tuple[str, ...]], ...] = ()
+# The byte-identical OpenRouter schematic generators were removed from this fork.
 
 
 def shared_file_problems(skills_dir: Path = SKILLS_DIR) -> list[str]:

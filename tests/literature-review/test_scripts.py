@@ -7,9 +7,7 @@ merges two distinct papers; a year filter that drops unparseable years quietly
 shrinks the corpus; ranking that treats a missing citation count as zero
 buries new work.
 
-The schematic scripts this skill also ships are covered by the shared
-contract, since `scientific-schematics` and `latex-posters` ship identical
-copies.
+The OpenRouter schematic scripts were removed from this fork.
 """
 
 from __future__ import annotations
@@ -19,22 +17,11 @@ import sys
 import unittest
 from pathlib import Path
 
-import skill_contract
-
 SKILL_ROOT = Path(__file__).resolve().parents[2] / "skills" / "literature-review"
 SCRIPTS = SKILL_ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 import search_databases  # noqa: E402
-
-SchematicTests = skill_contract.schematic.schematic_test_case(SKILL_ROOT)
-ReviewParsingTests = skill_contract.schematic.review_parsing_test_case(
-    SCRIPTS, "generate_schematic_ai"
-)
-ReviewFailureTests = skill_contract.schematic.review_failure_test_case(
-    SCRIPTS, "generate_schematic_ai", "ScientificSchematicGenerator",
-    ("diagram.png", "a prompt", 1, "journal", 2),
-)
 
 RESULTS = [
     {

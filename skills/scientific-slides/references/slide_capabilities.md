@@ -153,38 +153,13 @@ Different presentation contexts require different approaches. For comprehensive 
 
 ### 5. Implementation Options
 
-#### Nano Banana 2 PDF (Conceptual Drafts)
+#### Local slides
 
-**Best for**: Conceptual or overview slides where editable or semantic text is not required
-
-Generate conceptual slides as images when an image-only PDF meets the brief. Embed quantitative figures unchanged with PowerPoint/Beamer; reference-image generation can redraw them.
-
-**Workflow**:
-1. Plan each slide (title, content, visual elements)
-2. Generate each slide with `generate_slide_image.py`
-3. Combine into PDF with `slides_to_pdf.py`
+Build the deck in Beamer or PowerPoint. Use matplotlib, Graphviz, or Mermaid for diagrams. `scripts/slides_to_pdf.py` only assembles images you already have:
 
 ```bash
-# Generate slides
-python scripts/generate_slide_image.py "Title: Introduction..." -o slides/01.png
-python scripts/generate_slide_image.py "Title: Methods..." -o slides/02.png
-
-# Combine to PDF
 python scripts/slides_to_pdf.py slides/*.png -o presentation.pdf
 ```
-
-**Advantages**:
-- Most visually impressive results
-- Fast creation (describe and generate)
-- No design skills required
-- Consistent, professional appearance
-- Perfect for general audiences
-
-**Best for**:
-- Conference talks
-- Business presentations
-- General scientific talks
-- Pitch presentations
 
 #### PowerPoint via PptxGenJS
 
@@ -192,7 +167,7 @@ python scripts/slides_to_pdf.py slides/*.png -o presentation.pdf
 
 **Reference**: See `assets/powerpoint_design_guide.md` for complete documentation
 
-Use Nano Banana 2 with `--visual-only` to generate images, then build PPTX with text.
+Draw figures locally, then place them in the deck.
 
 **Key Resources**:
 - `assets/powerpoint_design_guide.md`: Complete PowerPoint design guide
@@ -200,7 +175,7 @@ Use Nano Banana 2 with `--visual-only` to generate images, then build PPTX with 
 - `scripts/validate_presentation.py` and `scripts/pdf_to_images.py` for checks and rendering
 
 **Workflow**:
-1. Generate visuals with `generate_slide_image.py --visual-only`
+1. Draw visuals with matplotlib, Graphviz, or Mermaid
 2. Author slides with PptxGenJS (for programmatic) or use templates
 3. Create presentation using PptxGenJS or template editing
 4. Add generated images and text content

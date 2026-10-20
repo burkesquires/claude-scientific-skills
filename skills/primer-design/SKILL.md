@@ -270,9 +270,3 @@ Tools return 0 when their computation completes, 1 for a completed design with n
 candidates or incomplete long-oligo thermodynamics, and 2 for invalid input or tool
 failure. Read the JSON scientific status even after exit 0: finding an off-target is
 a successfully completed calculation. See the input contract for screen-specific exits.
-
-## Citing Scientific Agent Skills
-
-If used in published work, cite the upstream methods in [sources.md](references/sources.md)
-and [Scientific Agent Skills](https://arxiv.org/abs/2609.00065). Report the software
-versions and assay-specific settings required to reproduce the actual analysis.

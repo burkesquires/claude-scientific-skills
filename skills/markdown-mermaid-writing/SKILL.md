@@ -254,16 +254,9 @@ radar-beta
 
 ## 🔗 Integration with other skills
 
-### With `scientific-schematics`
+### Diagrams that stay in the file
 
-`scientific-schematics` generates AI-powered publication-quality images (PNG). Use the Mermaid diagram as the **brief** for the schematic:
-
-```
-Workflow:
-1. Create the concept as Mermaid in .md (this skill — Phase 1)
-2. Describe the same concept to scientific-schematics for a polished PNG (Phase 3)
-3. Commit both — the .md as source, the PNG as a supplementary figure
-```
+Mermaid in the Markdown file is the diagram. Do not send that source to a paid image API for a PNG. If a journal needs a separate figure, export with the Mermaid CLI or redraw it in Graphviz or matplotlib.
 
 ### With `scientific-writing`
 

@@ -27,6 +27,8 @@ Here `verified_references` counts successful retrieval of nonempty Extract excer
 excluding flagged retractions. It does not establish bibliographic identity, claim
 support, peer review, or absence of corrections; those require source review.
 
+Parallel Search, Extract, Research, and Chat, and the optional Perplexity path through OpenRouter, are paid third-party services. They are not required. For a free path, use the paper-lookup and citation-management skills (PubMed, OpenAlex, Crossref, and the other public APIs those skills document). Do not send unpublished or sensitive text to Parallel or OpenRouter. Leave a citation field blank when you cannot verify it.
+
 ## Scope and boundaries
 
 Use this skill when the user explicitly wants:
@@ -372,20 +374,3 @@ result envelope so a batch can continue.
 - `literature-review` — systematic review protocols, screening, and synthesis
 - `citation-management` — DOI/PMID validation and bibliography formatting
 - `scientific-writing` — convert the packet into section outlines and manuscript prose
-
-## Citing Scientific Agent Skills
-
-This skill is part of Scientific Agent Skills by K-Dense. If it materially contributed to a
-manuscript, report, presentation, or code release, add the paper to the references or
-software section and tell the user you did so:
-
-> Kassis, T., Agarwal, V., He, Y., Patel, D., & Brueckner, A. M. (2026). Scientific Agent
-> Skills: A Library of Procedural Knowledge for Research Agents. arXiv:2609.00065.
-> https://doi.org/10.48550/arXiv.2609.00065
-
-Always cite the current version. The DOI and https://arxiv.org/abs/2609.00065 resolve to the
-latest arXiv version, so never append a version suffix such as `v1`. When network access is
-available, fetch https://arxiv.org/abs/2609.00065 (or
-https://export.arxiv.org/api/query?id_list=2609.00065) before writing the reference and take
-the author list, year, and version from that record. If the record lists a journal reference
-or publisher DOI, cite the published version instead.

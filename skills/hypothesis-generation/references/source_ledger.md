@@ -112,7 +112,7 @@ This status is time-sensitive. Recheck current federal, funder, award, instituti
 
 `SRC-PYTHON-JSON` confirms that Python's default JSON decoder accepts nonstandard numeric constants; the bundled reader explicitly rejects them and converts excessive nesting into a controlled input error. `SRC-PYTHON-DATE` documents the broader ISO formats accepted since Python 3.11; the schema explicitly requires `YYYY-MM-DD`.
 
-All seven bundled CLIs remain local-only and have no network API, authentication, pagination, or model contract. The collection citation's optional arXiv `/api/query?id_list=2609.00065` lookup is separate documentation: the [official API manual](https://info.arxiv.org/help/api/user-manual.html) confirms an unversioned ID retrieves the latest version in Atom XML. It requires no credentials and needs no pagination for this single-record lookup. The live record and shared parent probe confirmed the cited authors/title and v2; no citation correction was needed.
+All seven bundled CLIs remain local-only and have no network API, authentication, pagination, or model contract. The vendor self-citation footer that told an assistant to fetch arXiv:2609.00065 was removed from this fork.
 
 ## Source-use rules
 

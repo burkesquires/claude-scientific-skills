@@ -1,3 +1,5 @@
+> **Fork note (2026-10-20):** `parallel-cli` / parallel-web is an optional, paid third-party search service. It is not required. Use the assistant's own web search tool or the bibliographic databases below instead. Do not fill a citation field you cannot verify.
+
 # Core Workflow
 
 Illustrative workflow; example queries, dates, counts, and numerical findings are not executed review results. Run commands from this skill directory, using paths to your review workspace.

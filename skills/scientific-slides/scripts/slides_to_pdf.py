@@ -183,7 +183,7 @@ Supported formats: PNG, JPG, JPEG, GIF, WEBP, BMP
 Tips:
   - Name your slide images with numbers for correct ordering:
     01_title.png, 02_intro.png, 03_methods.png, etc.
-  - Use the generate_slide_image.py script to create slides first
+  - Create the slide images locally first (for example with matplotlib or another local figure tool)
   - Standard presentation aspect ratio is 16:9 (1920x1080 or 1280x720)
         """
     )

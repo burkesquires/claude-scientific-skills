@@ -24,7 +24,7 @@ from _common import (  # noqa: E402
 )
 
 try:
-    from scholarly import scholarly, ProxyGenerator
+    from scholarly import scholarly
     SCHOLARLY_AVAILABLE = True
 except ImportError:
     SCHOLARLY_AVAILABLE = False
@@ -33,25 +33,10 @@ except ImportError:
 class GoogleScholarSearcher:
     """Search Google Scholar using scholarly library."""
     
-    def __init__(self, use_proxy: bool = False):
-        """
-        Initialize searcher.
-        
-        Args:
-            use_proxy: Use an optional scholarly proxy provider (does not authorize bypassing blocks)
-        """
+    def __init__(self):
+        """Initialize searcher. Free-proxy routing was removed; do not route searches through random proxies."""
         if not SCHOLARLY_AVAILABLE:
             raise ImportError('scholarly library required. Install with: uv pip install scholarly')
-        
-        # Setup proxy if requested
-        if use_proxy:
-            try:
-                pg = ProxyGenerator()
-                pg.FreeProxies()
-                scholarly.use_proxy(pg)
-                print('Using free proxy', file=sys.stderr)
-            except Exception as e:
-                print(f'Warning: Could not setup proxy: {e}', file=sys.stderr)
     
     def search(self, query: str, max_results: int = 50,
                year_start: Optional[int] = None, year_end: Optional[int] = None,
@@ -198,12 +183,6 @@ def main():
     )
     
     parser.add_argument(
-        '--use-proxy',
-        action='store_true',
-        help='Use scholarly free-proxy support; respect upstream access restrictions'
-    )
-    
-    parser.add_argument(
         '-o', '--output',
         help='Output file (default: stdout)'
     )
@@ -227,7 +206,7 @@ def main():
         sys.exit(1)
     
     # Search
-    searcher = GoogleScholarSearcher(use_proxy=args.use_proxy)
+    searcher = GoogleScholarSearcher()
     results = searcher.search(
         args.query,
         max_results=args.limit,
