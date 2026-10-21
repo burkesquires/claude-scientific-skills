@@ -30,6 +30,10 @@ Cleanup in that sync, applied across `skills/` rather than to a short list of sk
 
 The MIT license and K-Dense copyright are unchanged. Install commands later in this README still name the upstream repository.
 
+### Using with Grok Bot
+
+On 2026-10-20, ten skills from this repo were added to a Grok Bot skill library and load with their `scripts/` and `references/` alongside the skill: ontology-term-resolution, pathogen-variant-surveillance, phylogenetics, etetoolkit, citation-management, paper-lookup, literature-review, scientific-writing, hypothesis-generation, and scientific-critical-thinking. Ask Grok Bot to add a skill from this repo; it reads that skill's `SKILL.md` and keeps the helper folders with it. This is not a Grok Bot plugin and not an endorsement, and it does not cover every skill here — skills that need a GPU, a paid API, or local GUI software may not run.
+
 > **🔔 Claude Scientific Skills is now Scientific Agent Skills.** Same skills, broader compatibility — now works with any AI agent that supports the open [Agent Skills](https://agentskills.io/) standard, not just Claude.
 
 > **New: [K-Dense BYOK](https://github.com/K-Dense-AI/k-dense-byok)** — A free, open-source AI co-scientist that runs on your desktop, powered by Scientific Agent Skills. Bring your own API keys, pick from 40+ models, and get a full research workspace with web search, file handling, 100+ scientific databases, and access to all 177 skills in this repo. Your data stays on your computer, and you can optionally scale to cloud compute via [Modal](https://modal.com/) for heavy workloads. [Get started here.](https://github.com/K-Dense-AI/k-dense-byok)
@@ -43,7 +47,7 @@ The MIT license and K-Dense copyright are unchanged. Install commands later in t
 
 A collection of **177 scientific and research skills** for AI agents, created by [K-Dense](https://k-dense.ai). The skills cover biology, chemistry, medicine, physics, engineering, Earth science, data analysis, and scientific communication. Each provides guidance for a specific package, data source, or workflow, including the scientific conventions and validation checks needed to use it.
 
-The collection follows the open [Agent Skills](https://agentskills.io/) standard and works with **Cursor, Claude Code, Codex, Google Antigravity, and other compatible hosts**. It is also a portable [Agent Plugins](https://agent-plugins.org/) package (`plugin.json` + `skills/`), so clients that support that standard can load the collection as one plugin. Browse the [illustrated skill guides](docs/skill-guides/README.md), [skill categories](#-available-skills), or [complete catalog](docs/skills.md) to choose the skills relevant to your work.
+The collection follows the open [Agent Skills](https://agentskills.io/) standard and works with **Cursor, Claude Code, Codex, Google Antigravity, and other compatible hosts**. Ten skills have also been loaded in Grok Bot; see [Using with Grok Bot](#using-with-grok-bot). It is also a portable [Agent Plugins](https://agent-plugins.org/) package (`plugin.json` + `skills/`), so clients that support that standard can load the collection as one plugin. Browse the [illustrated skill guides](docs/skill-guides/README.md), [skill categories](#-available-skills), or [complete catalog](docs/skills.md) to choose the skills relevant to your work.
 
 > ⭐ **Help make AI for science easier to discover:** If Scientific Agent Skills saves you time, teaches your agent a workflow, or helps your lab move faster, please [star this repository](https://github.com/K-Dense-AI/scientific-agent-skills). A star is a public signal that these open, reusable research skills are worth maintaining: it helps scientists, engineers, and open-source contributors find the project, shows which agent-skill standards are gaining real adoption, and gives us a clear reason to keep expanding the collection for the community.
 
@@ -321,7 +325,7 @@ Scientific Agent Skills is powered by **50+ incredible open source projects** ma
 
 - **Python**: 3.13+ for repository tooling; individual skill dependencies may support broader Python ranges
 - **uv**: Python package manager (required for installing skill dependencies)
-- **Client**: Any agent that supports the [Agent Skills](https://agentskills.io/) standard (Cursor, Claude Code, Gemini CLI, Codex, Google Antigravity, etc.)
+- **Client**: Any agent that supports the [Agent Skills](https://agentskills.io/) standard (Cursor, Claude Code, Gemini CLI, Codex, Google Antigravity, etc.). A subset also loads in Grok Bot; see [Using with Grok Bot](#using-with-grok-bot).
 - **System**: macOS, Linux, or Windows with WSL2
 - **Dependencies**: Follow each skill's `compatibility` field and setup instructions for packages, system tools, credentials, and network access. Installing the skill files does not install their dependencies
 
